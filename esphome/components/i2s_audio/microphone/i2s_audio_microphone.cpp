@@ -495,7 +495,7 @@ void I2SAudioMicrophone::loop() {
   }
 
   // Start the microphone if any semaphores are taken
-  if ((uxSemaphoreGetCount(this->active_listeners_semaphore_) < MAX_LISTENERS) &&
+  if ((uxSemaphoreGetCount(this->active_listeners_semaphore_) <= MAX_LISTENERS) &&
       (this->state_ == microphone::STATE_STOPPED)) {
     this->state_ = microphone::STATE_STARTING;
   }
